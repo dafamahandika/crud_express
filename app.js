@@ -21,6 +21,9 @@ db.sequelize.sync({ alter: true }).then(() => {
   console.log("Database Connected and Successfully Synced");
 });
 
+app.get("/", (req, res) => {
+  return res.send("Welcome to CRUD Express API");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api", userRoutes);
 
