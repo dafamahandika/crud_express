@@ -24,6 +24,11 @@ db.sequelize.sync({ alter: true }).then(() => {
 app.get("/", (req, res) => {
   return res.send("Welcome to CRUD Express API");
 });
+
+app.get("/health", (req, res) => {
+  return res.status(200).send("OK");
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api", userRoutes);
 
