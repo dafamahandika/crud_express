@@ -5,6 +5,7 @@ const User = require("../models/User");
 // REGISTER
 exports.register = async (req, res) => {
   try {
+    console.log("IP Address:", req.ip);
     const { name, email, password } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -27,6 +28,7 @@ exports.register = async (req, res) => {
 // LOGIN
 exports.login = async (req, res) => {
   try {
+    console.log("IP Address:", req.ip);
     const { email, password } = req.body;
 
     const user = await User.findOne({ where: { email } });
