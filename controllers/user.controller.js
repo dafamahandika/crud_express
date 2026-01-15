@@ -1,6 +1,7 @@
 const User = require("../models/User");
 
 exports.getUsers = async (req, res) => {
+  console.log("IP Address:", req.ip);
   const users = await User.findAll({
     attributes: { exclude: ["password"] },
   });
@@ -8,6 +9,7 @@ exports.getUsers = async (req, res) => {
 };
 
 exports.getUserById = async (req, res) => {
+  console.log("IP Address:", req.ip);
   const user = await User.findByPk(req.params.id, {
     attributes: { exclude: ["password"] },
   });
@@ -15,11 +17,13 @@ exports.getUserById = async (req, res) => {
 };
 
 exports.createUser = async (req, res) => {
+  console.log("IP Address:", req.ip);
   const user = await User.create(req.body);
   res.json(user);
 };
 
 exports.updateUser = async (req, res) => {
+  console.log("IP Address:", req.ip);
   await User.update(req.body, {
     where: { id: req.params.id },
   });
@@ -27,6 +31,7 @@ exports.updateUser = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
+  console.log("IP Address:", req.ip);
   await User.destroy({
     where: { id: req.params.id },
   });
