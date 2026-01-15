@@ -22,10 +22,12 @@ db.sequelize.sync({ alter: true }).then(() => {
 });
 
 app.get("/", (req, res) => {
+  console.log("IP Address:", req.ip);
   return res.send("Welcome to CRUD Express API");
 });
 
 app.get("/health", (req, res) => {
+  console.log("IP Address:", req.ip);
   return res.status(200).send("OK");
 });
 
